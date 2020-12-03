@@ -1,0 +1,9 @@
+[package]
+name = "advent_02"
+version = "0.1.0"
+authors = ["Irene Knapp <ireneista@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+advent_lib = { path = "../lib" }
+regex = "1"

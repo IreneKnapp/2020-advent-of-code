@@ -38,6 +38,16 @@ rec {
       # File a bug if you depend on any for non-debug work!
       debug = internal.debugCrate { inherit packageId; };
     };
+    "advent_02" = rec {
+      packageId = "advent_02";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_02";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
     "advent_lib" = rec {
       packageId = "advent_lib";
       build = internal.buildRustCrateWithFeatures {
@@ -89,6 +99,29 @@ rec {
         ];
         
       };
+      "advent_02" = rec {
+        crateName = "advent_02";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_02"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./02);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+          {
+            name = "regex";
+            packageId = "regex";
+          }
+        ];
+        
+      };
       "advent_lib" = rec {
         crateName = "advent_lib";
         version = "0.1.0";
@@ -96,6 +129,133 @@ rec {
         src = (builtins.filterSource sourceFilter ./lib);
         authors = [
           "Irene Knapp <ireneista@gmail.com>"
+        ];
+        
+      };
+      "aho-corasick" = rec {
+        crateName = "aho-corasick";
+        version = "0.7.15";
+        edition = "2015";
+        sha256 = "1rb8gzhljl8r87dpf2n5pnqnkl694casgns4ma0sqzd4zazzw13l";
+        libName = "aho_corasick";
+        authors = [
+          "Andrew Gallant <jamslam@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "memchr";
+            packageId = "memchr";
+            usesDefaultFeatures = false;
+          }
+        ];
+        features = {
+          "default" = [ "std" ];
+          "std" = [ "memchr/use_std" ];
+        };
+        resolvedDefaultFeatures = [ "default" "std" ];
+      };
+      "lazy_static" = rec {
+        crateName = "lazy_static";
+        version = "1.4.0";
+        edition = "2015";
+        sha256 = "0in6ikhw8mgl33wjv6q6xfrb5b9jr16q8ygjy803fay4zcisvaz2";
+        authors = [
+          "Marvin Löbel <loebel.marvin@gmail.com>"
+        ];
+        features = {
+          "spin_no_std" = [ "spin" ];
+        };
+      };
+      "memchr" = rec {
+        crateName = "memchr";
+        version = "2.3.4";
+        edition = "2015";
+        sha256 = "098m9clfs495illlw00hv2gg67mhm7jflld3msyclvi5m9xc9q8f";
+        authors = [
+          "Andrew Gallant <jamslam@gmail.com>"
+          "bluss"
+        ];
+        features = {
+          "default" = [ "std" ];
+          "use_std" = [ "std" ];
+        };
+        resolvedDefaultFeatures = [ "default" "std" "use_std" ];
+      };
+      "regex" = rec {
+        crateName = "regex";
+        version = "1.4.2";
+        edition = "2015";
+        sha256 = "172bw2yryv65whn3n5vkww4kgk0bq08lx0zbln8xwia7xl9jrkrq";
+        authors = [
+          "The Rust Project Developers"
+        ];
+        dependencies = [
+          {
+            name = "aho-corasick";
+            packageId = "aho-corasick";
+            optional = true;
+          }
+          {
+            name = "memchr";
+            packageId = "memchr";
+            optional = true;
+          }
+          {
+            name = "regex-syntax";
+            packageId = "regex-syntax";
+            usesDefaultFeatures = false;
+          }
+          {
+            name = "thread_local";
+            packageId = "thread_local";
+            optional = true;
+          }
+        ];
+        features = {
+          "default" = [ "std" "perf" "unicode" "regex-syntax/default" ];
+          "perf" = [ "perf-cache" "perf-dfa" "perf-inline" "perf-literal" ];
+          "perf-cache" = [ "thread_local" ];
+          "perf-literal" = [ "aho-corasick" "memchr" ];
+          "unicode" = [ "unicode-age" "unicode-bool" "unicode-case" "unicode-gencat" "unicode-perl" "unicode-script" "unicode-segment" "regex-syntax/unicode" ];
+          "unicode-age" = [ "regex-syntax/unicode-age" ];
+          "unicode-bool" = [ "regex-syntax/unicode-bool" ];
+          "unicode-case" = [ "regex-syntax/unicode-case" ];
+          "unicode-gencat" = [ "regex-syntax/unicode-gencat" ];
+          "unicode-perl" = [ "regex-syntax/unicode-perl" ];
+          "unicode-script" = [ "regex-syntax/unicode-script" ];
+          "unicode-segment" = [ "regex-syntax/unicode-segment" ];
+          "unstable" = [ "pattern" ];
+          "use_std" = [ "std" ];
+        };
+        resolvedDefaultFeatures = [ "aho-corasick" "default" "memchr" "perf" "perf-cache" "perf-dfa" "perf-inline" "perf-literal" "std" "thread_local" "unicode" "unicode-age" "unicode-bool" "unicode-case" "unicode-gencat" "unicode-perl" "unicode-script" "unicode-segment" ];
+      };
+      "regex-syntax" = rec {
+        crateName = "regex-syntax";
+        version = "0.6.21";
+        edition = "2015";
+        sha256 = "12d176jkgw9749g07zjxz0n78nyvb2nqx3j4sp5aqyphvji1n61v";
+        authors = [
+          "The Rust Project Developers"
+        ];
+        features = {
+          "default" = [ "unicode" ];
+          "unicode" = [ "unicode-age" "unicode-bool" "unicode-case" "unicode-gencat" "unicode-perl" "unicode-script" "unicode-segment" ];
+        };
+        resolvedDefaultFeatures = [ "default" "unicode" "unicode-age" "unicode-bool" "unicode-case" "unicode-gencat" "unicode-perl" "unicode-script" "unicode-segment" ];
+      };
+      "thread_local" = rec {
+        crateName = "thread_local";
+        version = "1.0.1";
+        edition = "2015";
+        sha256 = "054vlrr1vsdy1h4b7n99mr24pnj8928ig9qwzg36wnkld4dns36l";
+        authors = [
+          "Amanieu d'Antras <amanieu@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "lazy_static";
+            packageId = "lazy_static";
+          }
         ];
         
       };
