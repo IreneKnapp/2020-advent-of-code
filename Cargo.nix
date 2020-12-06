@@ -48,6 +48,46 @@ rec {
       # File a bug if you depend on any for non-debug work!
       debug = internal.debugCrate { inherit packageId; };
     };
+    "advent_03" = rec {
+      packageId = "advent_03";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_03";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
+    "advent_04" = rec {
+      packageId = "advent_04";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_04";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
+    "advent_05" = rec {
+      packageId = "advent_05";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_05";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
+    "advent_06" = rec {
+      packageId = "advent_06";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_06";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
     "advent_lib" = rec {
       packageId = "advent_lib";
       build = internal.buildRustCrateWithFeatures {
@@ -97,6 +137,12 @@ rec {
             packageId = "advent_lib";
           }
         ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
         
       };
       "advent_02" = rec {
@@ -118,6 +164,116 @@ rec {
           {
             name = "regex";
             packageId = "regex";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_03" = rec {
+        crateName = "advent_03";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_03"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./03);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_04" = rec {
+        crateName = "advent_04";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_04"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./04);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+          {
+            name = "regex";
+            packageId = "regex";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_05" = rec {
+        crateName = "advent_05";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_05"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./05);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_06" = rec {
+        crateName = "advent_06";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_06"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./06);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
           }
         ];
         
@@ -154,6 +310,86 @@ rec {
         };
         resolvedDefaultFeatures = [ "default" "std" ];
       };
+      "assert_cmd" = rec {
+        crateName = "assert_cmd";
+        version = "0.10.2";
+        edition = "2015";
+        crateBin = [];
+        sha256 = "0rfc8mc13bd7zl3ha6klnqzcpjyfxpk2nd5phyxf9r3m1wk5rb5p";
+        authors = [
+          "Pascal Hertleif <killercup@gmail.com>"
+          "Ed Page <eopage@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "escargot";
+            packageId = "escargot";
+          }
+          {
+            name = "predicates";
+            packageId = "predicates";
+            usesDefaultFeatures = false;
+            features = [ "difference" ];
+          }
+          {
+            name = "predicates-core";
+            packageId = "predicates-core";
+          }
+          {
+            name = "predicates-tree";
+            packageId = "predicates-tree";
+          }
+        ];
+        
+      };
+      "difference" = rec {
+        crateName = "difference";
+        version = "2.0.0";
+        edition = "2015";
+        crateBin = [];
+        sha256 = "1621wx4k8h452p6xzmzzvm7mz87kxh4yqz0kzxfjj9xmjxlbyk2j";
+        authors = [
+          "Johann Hofmann <mail@johann-hofmann.com>"
+        ];
+        features = {
+          "bin" = [ "getopts" ];
+        };
+        resolvedDefaultFeatures = [ "default" ];
+      };
+      "escargot" = rec {
+        crateName = "escargot";
+        version = "0.3.1";
+        edition = "2015";
+        crateBin = [];
+        sha256 = "19fmn7bz1h6nlqy0mp825xwjwnrjn4xjdpwc06jl51j3fiz1znqr";
+        authors = [
+          "Ed Page <eopage@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "serde";
+            packageId = "serde";
+            features = [ "derive" ];
+          }
+          {
+            name = "serde_json";
+            packageId = "serde_json";
+          }
+        ];
+        
+      };
+      "itoa" = rec {
+        crateName = "itoa";
+        version = "0.4.6";
+        edition = "2015";
+        sha256 = "1rnpb7rr8df76gnlk07b9086cn7fc0dxxy1ghh00q6nip7bklvyw";
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
+        features = {
+          "default" = [ "std" ];
+        };
+      };
       "lazy_static" = rec {
         crateName = "lazy_static";
         version = "1.4.0";
@@ -180,6 +416,101 @@ rec {
           "use_std" = [ "std" ];
         };
         resolvedDefaultFeatures = [ "default" "std" "use_std" ];
+      };
+      "predicates" = rec {
+        crateName = "predicates";
+        version = "1.0.5";
+        edition = "2018";
+        sha256 = "0nkkn3h3b9vigyy4adlnhi2zrxm5j0nbnqid6snwxp4h5v8ymgwn";
+        authors = [
+          "Nick Stevens <nick@bitcurry.com>"
+        ];
+        dependencies = [
+          {
+            name = "difference";
+            packageId = "difference";
+            optional = true;
+          }
+          {
+            name = "predicates-core";
+            packageId = "predicates-core";
+          }
+        ];
+        features = {
+          "default" = [ "difference" "regex" "float-cmp" "normalize-line-endings" ];
+        };
+        resolvedDefaultFeatures = [ "difference" ];
+      };
+      "predicates-core" = rec {
+        crateName = "predicates-core";
+        version = "1.0.0";
+        edition = "2015";
+        sha256 = "0y3ingf2i4xx7r61f1a8wizs57j8hh32hylyjbw9ymcj7qx5q1q6";
+        authors = [
+          "Nick Stevens <nick@bitcurry.com>"
+        ];
+        
+      };
+      "predicates-tree" = rec {
+        crateName = "predicates-tree";
+        version = "1.0.0";
+        edition = "2015";
+        sha256 = "090148qjilm2c722l873z7g31fhzj5j4qhd2xiv8mcqkj22w8qwf";
+        authors = [
+          "Nick Stevens <nick@bitcurry.com>"
+        ];
+        dependencies = [
+          {
+            name = "predicates-core";
+            packageId = "predicates-core";
+          }
+          {
+            name = "treeline";
+            packageId = "treeline";
+          }
+        ];
+        
+      };
+      "proc-macro2" = rec {
+        crateName = "proc-macro2";
+        version = "1.0.24";
+        edition = "2018";
+        sha256 = "0wcabxzrddcjmryndw8fpyxcq6rw63m701vx86xxf03y3bp081qy";
+        authors = [
+          "Alex Crichton <alex@alexcrichton.com>"
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "unicode-xid";
+            packageId = "unicode-xid";
+          }
+        ];
+        features = {
+          "default" = [ "proc-macro" ];
+        };
+        resolvedDefaultFeatures = [ "default" "proc-macro" ];
+      };
+      "quote" = rec {
+        crateName = "quote";
+        version = "1.0.7";
+        edition = "2018";
+        sha256 = "0drzd6pq7whq7qhdvvs8wn6pbb0hhc12pz8wv80fb05ixhbksmma";
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "proc-macro2";
+            packageId = "proc-macro2";
+            usesDefaultFeatures = false;
+          }
+        ];
+        features = {
+          "default" = [ "proc-macro" ];
+          "proc-macro" = [ "proc-macro2/proc-macro" ];
+        };
+        resolvedDefaultFeatures = [ "default" "proc-macro" ];
       };
       "regex" = rec {
         crateName = "regex";
@@ -243,6 +574,140 @@ rec {
         };
         resolvedDefaultFeatures = [ "default" "unicode" "unicode-age" "unicode-bool" "unicode-case" "unicode-gencat" "unicode-perl" "unicode-script" "unicode-segment" ];
       };
+      "ryu" = rec {
+        crateName = "ryu";
+        version = "1.0.5";
+        edition = "2018";
+        sha256 = "0vpqv1dj7fksa6hm3zpk5rbsjs0ifbfy7xwzsyyil0rx37a03lvi";
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
+        features = {
+        };
+      };
+      "serde" = rec {
+        crateName = "serde";
+        version = "1.0.118";
+        edition = "2015";
+        sha256 = "0028kv3dh3ix5g7jfws22zb9hcqq4cnpwn2lnlpam1wxhmil5ih6";
+        authors = [
+          "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "serde_derive";
+            packageId = "serde_derive";
+            optional = true;
+          }
+        ];
+        devDependencies = [
+          {
+            name = "serde_derive";
+            packageId = "serde_derive";
+          }
+        ];
+        features = {
+          "default" = [ "std" ];
+          "derive" = [ "serde_derive" ];
+        };
+        resolvedDefaultFeatures = [ "default" "derive" "serde_derive" "std" ];
+      };
+      "serde_derive" = rec {
+        crateName = "serde_derive";
+        version = "1.0.118";
+        edition = "2015";
+        sha256 = "1pvj4v8k107ichsnm7jgm9kxyi2lf971x52bmxhm5mcwd4k3akf8";
+        procMacro = true;
+        authors = [
+          "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "proc-macro2";
+            packageId = "proc-macro2";
+          }
+          {
+            name = "quote";
+            packageId = "quote";
+          }
+          {
+            name = "syn";
+            packageId = "syn";
+            features = [ "visit" ];
+          }
+        ];
+        features = {
+        };
+        resolvedDefaultFeatures = [ "default" ];
+      };
+      "serde_json" = rec {
+        crateName = "serde_json";
+        version = "1.0.60";
+        edition = "2018";
+        sha256 = "0yapc7xxk8dx12691yj0l13008rgvknmc6krvk8jwj7y4x6yh00m";
+        authors = [
+          "Erick Tryzelaar <erick.tryzelaar@gmail.com>"
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "itoa";
+            packageId = "itoa";
+            usesDefaultFeatures = false;
+          }
+          {
+            name = "ryu";
+            packageId = "ryu";
+          }
+          {
+            name = "serde";
+            packageId = "serde";
+            usesDefaultFeatures = false;
+          }
+        ];
+        features = {
+          "alloc" = [ "serde/alloc" ];
+          "default" = [ "std" ];
+          "preserve_order" = [ "indexmap" ];
+          "std" = [ "serde/std" ];
+        };
+        resolvedDefaultFeatures = [ "default" "std" ];
+      };
+      "syn" = rec {
+        crateName = "syn";
+        version = "1.0.53";
+        edition = "2018";
+        sha256 = "0s3y325n7s6gsg4wg0dq0pxymhv1x8qd4nmsp8my2kf24h3y4cw8";
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "proc-macro2";
+            packageId = "proc-macro2";
+            usesDefaultFeatures = false;
+          }
+          {
+            name = "quote";
+            packageId = "quote";
+            optional = true;
+            usesDefaultFeatures = false;
+          }
+          {
+            name = "unicode-xid";
+            packageId = "unicode-xid";
+          }
+        ];
+        features = {
+          "default" = [ "derive" "parsing" "printing" "clone-impls" "proc-macro" ];
+          "printing" = [ "quote" ];
+          "proc-macro" = [ "proc-macro2/proc-macro" "quote/proc-macro" ];
+          "test" = [ "syn-test-suite/all-features" ];
+        };
+        resolvedDefaultFeatures = [ "clone-impls" "default" "derive" "parsing" "printing" "proc-macro" "quote" "visit" ];
+      };
       "thread_local" = rec {
         crateName = "thread_local";
         version = "1.0.1";
@@ -258,6 +723,29 @@ rec {
           }
         ];
         
+      };
+      "treeline" = rec {
+        crateName = "treeline";
+        version = "0.1.0";
+        edition = "2015";
+        sha256 = "0hcdgyk5xzcx2ylm0fr9czzs9cjznm7l9q5qz51qi97i82r43xx7";
+        authors = [
+          "softprops <d.tangren@gmail.com>"
+        ];
+        
+      };
+      "unicode-xid" = rec {
+        crateName = "unicode-xid";
+        version = "0.2.1";
+        edition = "2015";
+        sha256 = "0r6mknipyy9vpz8mwmxvkx65ff2ha1n2pxqjj6f46lcn8yrhpzpp";
+        authors = [
+          "erick.tryzelaar <erick.tryzelaar@gmail.com>"
+          "kwantam <kwantam@gmail.com>"
+        ];
+        features = {
+        };
+        resolvedDefaultFeatures = [ "default" ];
       };
     };
 
