@@ -27,7 +27,14 @@ pub fn read_lines_file(filename: &str) -> Result<Vec<String>> {
     }
 
     let mut line_copy = String::new();
-    line_copy.push_str(buffer.trim());
+    match buffer.strip_suffix("\n") {
+      Some(stripped) => {
+        line_copy.push_str(stripped);
+      }
+      None => {
+        line_copy.push_str(&buffer);
+      }
+    }
     input.push(line_copy);
 
     buffer.clear();
