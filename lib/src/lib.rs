@@ -19,7 +19,7 @@ pub fn read_lines_file(filename: &str) -> Result<Vec<String>> {
   let mut reader = BufReader::new(file);
   let mut buffer = String::new();
 
-  let mut input: Vec<String> = Vec::new();
+  let mut input = Vec::new();
   loop {
     reader.read_line(&mut buffer)?;
     if buffer.len() == 0 {
@@ -43,24 +43,7 @@ pub fn read_lines_file(filename: &str) -> Result<Vec<String>> {
   Ok(input)
 }
 
-pub fn trim_lines<'a>(lines: &'a Vec<String>) -> Vec<&str> {
-  let mut trimmed_lines = Vec::new();
-
-  for line in lines {
-    match line.strip_suffix("\n") {
-      Some(stripped) => {
-        trimmed_lines.push(stripped);
-      }
-      None => {
-        trimmed_lines.push(line);
-      }
-    }
-  }
-
-  trimmed_lines
-}
-
-pub fn group_lines_by_blanks(lines: Vec<&str>) -> Vec<Vec<&str>> {
+pub fn group_lines_by_blanks(lines: Vec<String>) -> Vec<Vec<String>> {
   let mut all_groups = Vec::new();
   let mut current_group = Vec::new();
 
