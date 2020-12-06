@@ -26,7 +26,7 @@ fn main() -> Result<()> {
   let mut current_is_valid = true;
 
   for line in &input {
-    if line.trim().len() == 0 {
+    if line.len() == 0 {
       //println!("{:?}", current_fields);
 
       if current_is_valid

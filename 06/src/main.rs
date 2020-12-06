@@ -12,8 +12,7 @@ fn main() -> Result<()> {
   let filename = args.next().unwrap();
 
   let input = advent_lib::read_lines_file(&filename)?;
-  let trimmed = advent_lib::trim_lines(&input);
-  let groups = advent_lib::group_lines_by_blanks(trimmed);
+  let groups = advent_lib::group_lines_by_blanks(input);
 
   let mut unioned_sum = 0;
 

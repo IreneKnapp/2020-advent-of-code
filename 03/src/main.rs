@@ -16,7 +16,7 @@ fn main() -> Result<()> {
   for line in &input {
     let mut tree_line: Vec<bool> = Vec::new();
 
-    for c in line.trim().chars() {
+    for c in line.chars() {
       if c == '#' {
         tree_line.push(true);
       } else {
