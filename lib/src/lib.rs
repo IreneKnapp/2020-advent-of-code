@@ -36,6 +36,25 @@ pub fn read_lines_file(filename: &str) -> Result<Vec<String>> {
   Ok(input)
 }
 
+pub fn group_lines_by_blanks(lines: Vec<String>) -> Result<Vec<Vec<String>>> {
+  let mut all_groups = Vec::new();
+  let mut current_group = Vec::new();
+
+  for line in lines {
+    if line.trim().len() == 0 {
+      all_groups.push(current_group);
+      current_group = Vec::new();
+    } else {
+      current_group.push(line);
+    }
+  }
+
+  if current_group.len() > 0 {
+    all_groups.push(current_group);
+  }
+
+  Ok(all_groups)
+}
 
 pub fn read_int_file(filename: &str) -> Result<Vec<i64>> {
   let file = File::open(filename)?;
