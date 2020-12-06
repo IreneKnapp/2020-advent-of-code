@@ -36,12 +36,29 @@ pub fn read_lines_file(filename: &str) -> Result<Vec<String>> {
   Ok(input)
 }
 
-pub fn group_lines_by_blanks(lines: Vec<String>) -> Result<Vec<Vec<String>>> {
+pub fn trim_lines<'a>(lines: &'a Vec<String>) -> Vec<&str> {
+  let mut trimmed_lines = Vec::new();
+
+  for line in lines {
+    match line.strip_suffix("\n") {
+      Some(stripped) => {
+        trimmed_lines.push(stripped);
+      }
+      None => {
+        trimmed_lines.push(line);
+      }
+    }
+  }
+
+  trimmed_lines
+}
+
+pub fn group_lines_by_blanks(lines: Vec<&str>) -> Vec<Vec<&str>> {
   let mut all_groups = Vec::new();
   let mut current_group = Vec::new();
 
   for line in lines {
-    if line.trim().len() == 0 {
+    if line.len() == 0 {
       all_groups.push(current_group);
       current_group = Vec::new();
     } else {
@@ -53,7 +70,7 @@ pub fn group_lines_by_blanks(lines: Vec<String>) -> Result<Vec<Vec<String>>> {
     all_groups.push(current_group);
   }
 
-  Ok(all_groups)
+  all_groups
 }
 
 pub fn read_int_file(filename: &str) -> Result<Vec<i64>> {
