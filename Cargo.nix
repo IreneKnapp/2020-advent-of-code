@@ -148,6 +148,26 @@ rec {
       # File a bug if you depend on any for non-debug work!
       debug = internal.debugCrate { inherit packageId; };
     };
+    "advent_13" = rec {
+      packageId = "advent_13";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_13";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
+    "advent_14" = rec {
+      packageId = "advent_14";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_14";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
     "advent_lib" = rec {
       packageId = "advent_lib";
       build = internal.buildRustCrateWithFeatures {
@@ -471,6 +491,56 @@ rec {
           { name = "advent_12"; path = "src/main.rs"; }
         ];
         src = (builtins.filterSource sourceFilter ./12);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_13" = rec {
+        crateName = "advent_13";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_13"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./13);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_14" = rec {
+        crateName = "advent_14";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_14"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./14);
         authors = [
           "Irene Knapp <ireneista@gmail.com>"
         ];
