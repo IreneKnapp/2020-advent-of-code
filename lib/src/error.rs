@@ -39,3 +39,14 @@ impl From<std::num::ParseIntError> for Error {
     Error::Parse
   }
 }
+
+impl From<lalrpop_util::ParseError<usize, lalrpop_util::lexer::Token<'_>,
+  &str>> for Error
+{
+  fn from(_: lalrpop_util::ParseError<usize, lalrpop_util::lexer::Token<'_>,
+              &str>) -> Error
+  {
+    Error::Parse
+  }
+}
+

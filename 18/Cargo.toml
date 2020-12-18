@@ -1,0 +1,16 @@
+[package]
+name = "advent_18"
+version = "0.1.0"
+authors = ["Irene Knapp <ireneista@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+advent_lib = { path = "../lib" }
+lalrpop-util = "0.19"
+
+[dev-dependencies]
+assert_cmd = "0.10"
+lalrpop = { version = "0.19", features = [ "lexer" ] }
+
+[build-dependencies]
+lalrpop = { version = "0.19", features = [ "lexer" ] }

@@ -1,0 +1,54 @@
+grammar;
+
+pub Expression: i64 = {
+  <Term>,
+  <left:Expression> PLUS <right:Term> => {
+    left + right
+  },
+  <left:Expression> STAR <right:Term> => {
+    left * right
+  },
+};
+
+Term: i64 = {
+  NUMBER => {
+    <>.parse::<i64>().unwrap()
+  },
+  LEFT_PARENTHESIS <Expression> RIGHT_PARENTHESIS,
+};
+
+pub ExpressionPro: i64 = {
+  <Expression2Pro>,
+  <left:ExpressionPro> STAR <right:Expression2Pro> => {
+    left * right
+  },
+};
+
+Expression2Pro: i64 = {
+  <TermPro>,
+  <left:Expression2Pro> PLUS <right:TermPro> => {
+    left + right
+  },
+};
+
+TermPro: i64 = {
+  NUMBER => {
+    <>.parse::<i64>().unwrap()
+  },
+  LEFT_PARENTHESIS <ExpressionPro> RIGHT_PARENTHESIS,
+};
+
+match {
+  r"\p{Zs}+" => { },
+
+  r"[0-9]+" => NUMBER,
+
+  "+" => PLUS,
+
+  "*" => STAR,
+
+  "(" => LEFT_PARENTHESIS,
+
+  ")" => RIGHT_PARENTHESIS,
+}
+
