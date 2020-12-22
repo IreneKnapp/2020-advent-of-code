@@ -218,6 +218,36 @@ rec {
       # File a bug if you depend on any for non-debug work!
       debug = internal.debugCrate { inherit packageId; };
     };
+    "advent_20" = rec {
+      packageId = "advent_20";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_20";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
+    "advent_21" = rec {
+      packageId = "advent_21";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_21";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
+    "advent_22" = rec {
+      packageId = "advent_22";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_22";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
     "advent_lib" = rec {
       packageId = "advent_lib";
       build = internal.buildRustCrateWithFeatures {
@@ -749,6 +779,81 @@ rec {
         ];
         
       };
+      "advent_20" = rec {
+        crateName = "advent_20";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_20"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./20);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_21" = rec {
+        crateName = "advent_21";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_21"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./21);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_22" = rec {
+        crateName = "advent_22";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_22"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./22);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
       "advent_lib" = rec {
         crateName = "advent_lib";
         version = "0.1.0";
@@ -761,6 +866,13 @@ rec {
           {
             name = "lalrpop-util";
             packageId = "lalrpop-util";
+          }
+        ];
+        buildDependencies = [
+          {
+            name = "lalrpop";
+            packageId = "lalrpop";
+            features = [ "lexer" ];
           }
         ];
         

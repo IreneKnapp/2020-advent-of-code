@@ -165,9 +165,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "advent_21"
+version = "0.1.0"
+dependencies = [
+ "advent_lib",
+ "assert_cmd",
+]
+
+[[package]]
+name = "advent_22"
+version = "0.1.0"
+dependencies = [
+ "advent_lib",
+ "assert_cmd",
+]
+
+[[package]]
 name = "advent_lib"
 version = "0.1.0"
 dependencies = [
+ "lalrpop",
  "lalrpop-util",
 ]
 
