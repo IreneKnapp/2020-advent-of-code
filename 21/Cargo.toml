@@ -1,0 +1,11 @@
+[package]
+name = "advent_21"
+version = "0.1.0"
+authors = ["Irene Knapp <ireneista@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+advent_lib = { path = "../lib" }
+
+[dev-dependencies]
+assert_cmd = "0.10"
