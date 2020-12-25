@@ -268,6 +268,16 @@ rec {
       # File a bug if you depend on any for non-debug work!
       debug = internal.debugCrate { inherit packageId; };
     };
+    "advent_25" = rec {
+      packageId = "advent_25";
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "advent_25";
+      };
+
+      # Debug support which might change between releases.
+      # File a bug if you depend on any for non-debug work!
+      debug = internal.debugCrate { inherit packageId; };
+    };
     "advent_lib" = rec {
       packageId = "advent_lib";
       build = internal.buildRustCrateWithFeatures {
@@ -907,6 +917,31 @@ rec {
           { name = "advent_24"; path = "src/main.rs"; }
         ];
         src = (builtins.filterSource sourceFilter ./24);
+        authors = [
+          "Irene Knapp <ireneista@gmail.com>"
+        ];
+        dependencies = [
+          {
+            name = "advent_lib";
+            packageId = "advent_lib";
+          }
+        ];
+        devDependencies = [
+          {
+            name = "assert_cmd";
+            packageId = "assert_cmd";
+          }
+        ];
+        
+      };
+      "advent_25" = rec {
+        crateName = "advent_25";
+        version = "0.1.0";
+        edition = "2018";
+        crateBin = [
+          { name = "advent_25"; path = "src/main.rs"; }
+        ];
+        src = (builtins.filterSource sourceFilter ./25);
         authors = [
           "Irene Knapp <ireneista@gmail.com>"
         ];
